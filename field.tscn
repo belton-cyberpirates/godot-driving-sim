@@ -1,0 +1,221 @@
+[gd_scene format=3 uid="uid://bdbaqaqjdfpy2"]
+
+[ext_resource type="Texture2D" uid="uid://cm4pmp8nthiwx" path="res://art/biobuzz_field (1).png" id="1_6e7u2"]
+[ext_resource type="Script" uid="uid://dsk8x68swawyc" path="res://field.gd" id="1_ujqnb"]
+[ext_resource type="PackedScene" uid="uid://drwhwslehr6c7" path="res://pollen.tscn" id="2_ujqnb"]
+[ext_resource type="Texture2D" uid="uid://yb15cxtlo25h" path="res://art/New Piskel (10).png" id="3_c2tsg"]
+[ext_resource type="Script" uid="uid://ck50cpeobhxlm" path="res://goal.gd" id="4_srqns"]
+[ext_resource type="PackedScene" uid="uid://cg1q4nqf57njd" path="res://blue_nectar.tscn" id="5_blue"]
+[ext_resource type="PackedScene" uid="uid://ddh81kqnjnicv" path="res://red_nectar.tscn" id="6_red"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fv55i"]
+size = Vector2(81, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wl0gf"]
+size = Vector2(12, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6lt7h"]
+size = Vector2(10, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8bgcc"]
+size = Vector2(10, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_utqqc"]
+size = Vector2(5, 37)
+
+[node name="Field" type="Node2D" unique_id=969254479]
+script = ExtResource("1_ujqnb")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1384377938]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1882353, 0.43529412, 0.1882353, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=661680107]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.0
+offset_top = -146.0
+offset_right = 146.0
+offset_bottom = 146.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=413890586]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1062080]
+build_mode = 1
+polygon = PackedVector2Array(144, 144, 144, -144, -144, -144, -144, 144, 0, 144)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=184931462]
+position = Vector2(0.5, -49.5)
+shape = SubResource("RectangleShape2D_fv55i")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1386895887]
+position = Vector2(0.5, 48.5)
+shape = SubResource("RectangleShape2D_fv55i")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1905939329]
+position = Vector2(-48, -138.5)
+shape = SubResource("RectangleShape2D_wl0gf")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=1356944087]
+position = Vector2(48, 138.5)
+shape = SubResource("RectangleShape2D_wl0gf")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=1369015483]
+position = Vector2(139, -47.5)
+shape = SubResource("RectangleShape2D_6lt7h")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D" unique_id=1706177781]
+position = Vector2(-139, 48)
+shape = SubResource("RectangleShape2D_8bgcc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=983968282]
+scale = Vector2(0.267, 0.267)
+texture = ExtResource("1_6e7u2")
+
+[node name="BlueGoal" type="Sprite2D" parent="Sprite2D" unique_id=1310543293]
+z_index = 5
+texture = ExtResource("1_6e7u2")
+offset = Vector2(0, -99.5)
+region_enabled = true
+region_rect = Rect2(348, 358, 384, 165)
+
+[node name="Marker" type="Sprite2D" parent="Sprite2D/BlueGoal" unique_id=829914889]
+texture_filter = 1
+position = Vector2(0, -101.12363)
+scale = Vector2(5, 5)
+texture = ExtResource("3_c2tsg")
+region_enabled = true
+region_rect = Rect2(0, 16, 16, 16)
+
+[node name="RedGoal" type="Sprite2D" parent="Sprite2D" unique_id=717895076]
+z_index = 5
+texture = ExtResource("1_6e7u2")
+offset = Vector2(0, 99.5)
+region_enabled = true
+region_rect = Rect2(348, 557, 384, 165)
+
+[node name="Marker" type="Sprite2D" parent="Sprite2D/RedGoal" unique_id=2104936293]
+texture_filter = 1
+position = Vector2(0, 100)
+scale = Vector2(5, 5)
+texture = ExtResource("3_c2tsg")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Pollen" parent="." unique_id=492584681 instance=ExtResource("2_ujqnb")]
+position = Vector2(-141, -141)
+
+[node name="Pollen2" parent="." unique_id=1437754946 instance=ExtResource("2_ujqnb")]
+position = Vector2(-141, -135)
+
+[node name="Pollen3" parent="." unique_id=1683068667 instance=ExtResource("2_ujqnb")]
+position = Vector2(-141, -129)
+
+[node name="Pollen4" parent="." unique_id=879526468 instance=ExtResource("2_ujqnb")]
+position = Vector2(-141, -123)
+
+[node name="Pollen5" parent="." unique_id=862939722 instance=ExtResource("2_ujqnb")]
+position = Vector2(141, 123)
+
+[node name="Pollen6" parent="." unique_id=299382913 instance=ExtResource("2_ujqnb")]
+position = Vector2(141, 129)
+
+[node name="Pollen7" parent="." unique_id=54204439 instance=ExtResource("2_ujqnb")]
+position = Vector2(141, 135)
+
+[node name="Pollen8" parent="." unique_id=381860791 instance=ExtResource("2_ujqnb")]
+position = Vector2(141, 141)
+
+[node name="BlueNectar1" parent="." unique_id=527068948 instance=ExtResource("5_blue")]
+position = Vector2(-19, -35)
+
+[node name="BlueNectar2" parent="." unique_id=1098348136 instance=ExtResource("5_blue")]
+position = Vector2(-19, -27)
+
+[node name="BlueNectar3" parent="." unique_id=743559042 instance=ExtResource("5_blue")]
+position = Vector2(-19, -19)
+
+[node name="RedNectar1" parent="." unique_id=1525653118 instance=ExtResource("6_red")]
+position = Vector2(19, 19)
+
+[node name="RedNectar2" parent="." unique_id=2009192551 instance=ExtResource("6_red")]
+position = Vector2(19, 27)
+
+[node name="RedNectar3" parent="." unique_id=610480269 instance=ExtResource("6_red")]
+position = Vector2(19, 35)
+
+[node name="BlueRightGoal" type="Area2D" parent="." unique_id=473299565]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_srqns")
+direction = 1
+up = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlueRightGoal" unique_id=1296680788]
+position = Vector2(35, -26.5)
+shape = SubResource("RectangleShape2D_utqqc")
+
+[node name="Marker2D" type="Marker2D" parent="BlueRightGoal" unique_id=400768337]
+position = Vector2(19, -27)
+
+[node name="RedRightGoal" type="Area2D" parent="." unique_id=276537812 node_paths=PackedStringArray("held_elements")]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_srqns")
+direction = 1
+held_elements = [NodePath("../RedNectar1"), NodePath("../RedNectar2"), NodePath("../RedNectar3")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RedRightGoal" unique_id=980258167]
+position = Vector2(35, 26.5)
+shape = SubResource("RectangleShape2D_utqqc")
+
+[node name="Marker2D" type="Marker2D" parent="RedRightGoal" unique_id=659162309]
+position = Vector2(19, 27)
+
+[node name="BlueLeftGoal" type="Area2D" parent="." unique_id=1901344772 node_paths=PackedStringArray("held_elements")]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_srqns")
+held_elements = [NodePath("../BlueNectar1"), NodePath("../BlueNectar2"), NodePath("../BlueNectar3")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlueLeftGoal" unique_id=699110421]
+position = Vector2(-35, -26.5)
+shape = SubResource("RectangleShape2D_utqqc")
+
+[node name="Marker2D" type="Marker2D" parent="BlueLeftGoal" unique_id=1074436660]
+position = Vector2(-19, -27)
+
+[node name="RedLeftGoal" type="Area2D" parent="." unique_id=496767676]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_srqns")
+up = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RedLeftGoal" unique_id=1642987944]
+position = Vector2(-35, 26.5)
+shape = SubResource("RectangleShape2D_utqqc")
+
+[node name="Marker2D" type="Marker2D" parent="RedLeftGoal" unique_id=1337532002]
+position = Vector2(-19, 27)
+
+[node name="BlueHumanPlayerZone" type="Marker2D" parent="." unique_id=460852762]
+position = Vector2(72, -134)
+
+[node name="RedHumanPlayerZone" type="Marker2D" parent="." unique_id=1914675323]
+position = Vector2(-72, 134)

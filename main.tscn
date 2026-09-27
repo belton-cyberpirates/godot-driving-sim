@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bgchf3xel2whl"]
+
+[ext_resource type="PackedScene" uid="uid://bdbaqaqjdfpy2" path="res://field.tscn" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://7ye7p6pmj8pr" path="res://robot.tscn" id="1_ig7tw"]
+
+[node name="Main" type="Node2D" unique_id=787235773]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1519426065]
+zoom = Vector2(0.9, 0.9)
+
+[node name="Field" parent="." unique_id=969254479 instance=ExtResource("1_0xm2m")]
+
+[node name="Robot" parent="." unique_id=209589484 instance=ExtResource("1_ig7tw")]
+position = Vector2(-127, -24)
+rotation = 1.5707964

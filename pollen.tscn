@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://drwhwslehr6c7"]
+
+[ext_resource type="Texture2D" uid="uid://bsqtwtb4gt5xx" path="res://art/New Piskel (6).png" id="1_1woch"]
+[ext_resource type="Script" uid="uid://8u4ngyc83q5y" path="res://game_element.gd" id="1_y864m"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_y864m"]
+bounce = 0.1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fv55i"]
+radius = 3.0
+
+[node name="Pollen" type="RigidBody2D" unique_id=492584681]
+z_index = 3
+texture_filter = 3
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_y864m")
+gravity_scale = 0.0
+linear_damp = 4.0
+angular_damp = 2.0
+script = ExtResource("1_y864m")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1317600220]
+texture = ExtResource("1_1woch")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=390603450]
+shape = SubResource("CircleShape2D_fv55i")

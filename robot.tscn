@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://7ye7p6pmj8pr"]
+
+[ext_resource type="Texture2D" uid="uid://dusib1rsl05xu" path="res://art/New Piskel (8).png" id="1_3cn6f"]
+[ext_resource type="Script" uid="uid://bny1ee1idgyff" path="res://robot.gd" id="1_dfm56"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfm56"]
+atlas = ExtResource("1_3cn6f")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhfw1"]
+atlas = ExtResource("1_3cn6f")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fv55i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfm56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhfw1")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wl0gf"]
+size = Vector2(24, 5)
+
+[node name="Robot" type="CharacterBody2D" unique_id=209589484 node_paths=PackedStringArray("holders")]
+texture_filter = 3
+motion_mode = 1
+script = ExtResource("1_dfm56")
+holders = [NodePath("Holder1"), NodePath("Holder2"), NodePath("Holder3"), NodePath("Holder4")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=494917725]
+polygon = PackedVector2Array(-16, -16, 16, -16, 16, 10, 14, 10, 14, 16, 12, 16, 12, 10, -12, 10, -12, 16, -14, 16, -14, 10, -16, 10)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=143555876]
+sprite_frames = SubResource("SpriteFrames_fv55i")
+
+[node name="IntakeCollider" type="Area2D" parent="." unique_id=699687167]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IntakeCollider" unique_id=1667694453]
+position = Vector2(0, 13.5)
+shape = SubResource("RectangleShape2D_wl0gf")
+
+[node name="Holder1" type="Marker2D" parent="." unique_id=1674418605]
+position = Vector2(0, -9)
+
+[node name="Holder2" type="Marker2D" parent="." unique_id=163699004]
+position = Vector2(0, -2)
+
+[node name="Holder3" type="Marker2D" parent="." unique_id=166190176]
+position = Vector2(0, 5)
+
+[node name="Holder4" type="Marker2D" parent="." unique_id=915387254]
+position = Vector2(0, 12)
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=629926768]
+target_position = Vector2(0, -80)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="DropPos" type="Marker2D" parent="." unique_id=359820900]
+position = Vector2(0, -24)
+
+[connection signal="body_entered" from="IntakeCollider" to="." method="_on_intake_collider_body_entered"]
